@@ -53,10 +53,87 @@ svg *{vector-effect:non-scaling-stroke}
   background:linear-gradient(145deg,rgba(98,116,125,.08),rgba(215,210,200,.04) 45%,transparent 78%);
   filter:blur(30px);transform:translateZ(-120px)
 }
-dialog{border:0;width:min(900px,100vw);height:100vh;max-width:none;max-height:none;margin:0 0 0 auto;padding:0;background:#fff;color:#111}
-dialog::backdrop{background:rgba(255,255,255,.72);backdrop-filter:blur(8px)}.dhead{height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;border-bottom:1px solid var(--line)}.dtitle{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}.close{border:0;background:none;font-size:25px;padding:0;cursor:pointer}.dbody{padding:52px 7vw 100px;max-width:760px}.dbody h2{font-size:clamp(34px,6vw,62px);line-height:.95;letter-spacing:-.045em;font-weight:500;margin:0 0 24px}.dbody p{font-size:18px;line-height:1.65;color:#333}.free{padding-top:26px;border-top:1px solid var(--line);margin-top:34px;font-size:12px!important;color:#666!important}
+dialog{
+    border:1px solid rgba(17,17,17,.12);
+    width:min(860px,calc(100vw - 36px));
+    height:min(82svh,860px);
+    max-width:860px;
+    max-height:82svh;
+    margin:auto;
+    padding:0;
+    background:#fff;
+    color:#111;
+    box-shadow:0 28px 90px rgba(0,0,0,.12);
+    overflow:hidden
+  }
+dialog::backdrop{
+    background:rgba(245,245,243,.78);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px)
+  }.dhead{
+    height:64px;
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    padding:0 18px;
+    border-bottom:1px solid var(--line);
+    background:rgba(255,255,255,.94);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px)
+  }.dtitle{
+    grid-column:2;
+    justify-self:center;
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    white-space:nowrap
+  }.close{
+    grid-column:3;
+    justify-self:end;
+    border:0;
+    background:none;
+    font-size:24px;
+    line-height:1;
+    padding:6px;
+    cursor:pointer
+  }
+  .back{
+    grid-column:1;
+    justify-self:start;
+    border:0;
+    background:none;
+    padding:6px 0;
+    cursor:pointer;
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:.12em;
+    text-transform:uppercase
+  }
+  .back::before{content:"← ";font-size:13px}.dbody{
+    height:calc(100% - 64px);
+    overflow:auto;
+    -webkit-overflow-scrolling:touch;
+    padding:48px 44px 80px;
+    max-width:760px;
+    margin:0 auto
+  }.dbody h2{
+    font-size:clamp(32px,5vw,56px);
+    line-height:.98;
+    letter-spacing:-.042em;
+    font-weight:500;
+    margin:0 auto 28px;
+    max-width:12ch;
+    text-align:center;
+    text-wrap:balance
+  }.dbody p{font-size:18px;line-height:1.65;color:#333}.free{padding-top:26px;border-top:1px solid var(--line);margin-top:34px;font-size:12px!important;color:#666!important}
 .nav{position:fixed;z-index:40;inset:0 auto 0 0;width:min(390px,90vw);background:#fff;border-right:1px solid var(--line);transform:translateX(-102%);transition:.32s;padding:76px 24px 40px;overflow:auto}.nav.open{transform:none}.nav a{display:grid;grid-template-columns:34px 1fr;gap:8px;border-bottom:1px solid var(--line);padding:10px 0;font-size:12px}.nav i{font-style:normal;color:#aaa;font-size:9px;letter-spacing:.12em}.navclose{position:absolute;top:20px;right:20px;border:0;background:none;font-size:24px}
-@media(max-width:760px){:root{--bar:54px}header{grid-template-columns:1fr auto;padding:0 16px}.current{display:none}h1{font-size:clamp(34px,11.5vw,52px);max-width:10ch}.summary{font-size:16px;max-width:31ch}.space{inset:6vh -7vw}svg{width:114vw;height:68vh}.light{width:85vw;height:85vw}.copy:before{height:240px}}
+@media(max-width:760px){:root{--bar:54px
+    dialog{width:calc(100vw - 24px);height:min(86svh,760px);max-height:86svh}
+    .dhead{height:58px;padding:0 14px}
+    .dbody{height:calc(100% - 58px);padding:34px 22px 64px}
+    .back{font-size:9px}
+  }header{grid-template-columns:1fr auto;padding:0 16px}.current{display:none}h1{font-size:clamp(34px,11.5vw,52px);max-width:10ch}.summary{font-size:16px;max-width:31ch}.space{inset:6vh -7vw}svg{width:114vw;height:68vh}.light{width:85vw;height:85vw}.copy:before{height:240px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.space,.copy,.far,.mid,.near{transform:none!important;filter:none!important}.far{opacity:.07!important}.mid{opacity:.20!important}.near{opacity:.03!important}}
 
 .setup-list{padding-left:1.25rem;margin:24px 0}
@@ -69,7 +146,7 @@ dialog::backdrop{background:rgba(255,255,255,.72);backdrop-filter:blur(8px)}.dhe
 .path-compare{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:30px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px 0}
 .path-compare p{font-size:15px!important}
 @media(max-width:700px){.path-compare{grid-template-columns:1fr}}
-</style></head><body><div id="progress"></div><header><div class="brand">GALAMBOS ARCHITECTS</div><div class="current">AI Doing the Work for the Practice</div><button class="index">Index</button></header><nav class="nav"><button class="navclose">×</button></nav><main></main><dialog><div class="dhead"><div class="dtitle">Details</div><button class="close">×</button></div><div class="dbody"></div></dialog><script>
+</style></head><body><div id="progress"></div><header><div class="brand">GALAMBOS ARCHITECTS</div><div class="current">AI Doing the Work for the Practice</div><button class="index">Index</button></header><nav class="nav"><button class="navclose">×</button></nav><main></main><dialog><div class="dhead"><button class="back" type="button" aria-label="Back to presentation">Back</button><div class="dtitle">Details</div><button class="close" type="button" aria-label="Close details">×</button></div><div class="dbody"></div></dialog><script>
 const DATA=[{"title":"Hand This File to ChatGPT Work","summary":"The agent reads the blueprint, builds the setup plan, asks for needed human actions, and starts implementation.","detailHtml":"<p>Once this file is handed to a ChatGPT Work session or implementation agent, that agent becomes the setup orchestrator.</p>\n    <ol class=\"setup-list\">\n      <li><strong>Read the blueprint.</strong> Turn it into a firm-specific implementation checklist and sequence.</li>\n      <li><strong>Ask only what is missing.</strong> Confirm current software, project storage, CAD/BIM, accounting, email/calendar, team roles and priorities.</li>\n      <li><strong>Use humans where required.</strong> Pause for account creation, billing approval, email invitations, MFA, provider sign-ins and OAuth/admin consent.</li>\n      <li><strong>Verify and continue.</strong> Confirm each workspace, seat, app connection and permission before moving to the next step.</li>\n      <li><strong>Build the first working pilot.</strong> Configure the shared agents, project memory and initial architecture workflows, then test them with the team.</li>\n    </ol>\n    <p class=\"quiet-note\">Humans should enter passwords, payment information and MFA directly in the provider’s secure page—not in the chat. The agent coordinates the process and resumes after each required human action.</p>"},{"title":"Set Up the Shared AI Workspace","summary":"AI guides Business signup, team invites, desktop/mobile installs, billing, and connections to the firm’s existing software.","detailHtml":"<p><strong>Start with one ChatGPT Business workspace for the firm.</strong> ChatGPT Work is included with Business; it is not a separate subscription.</p>\n    <div class=\"setup-block\">\n      <h3>Recommended starting configuration</h3>\n      <p>Use a <strong>Premium Business seat</strong> for the person doing the heaviest AI implementation work, and <strong>Standard Business seats</strong> for the rest of the team. Seats can be mixed and changed later as actual usage becomes clear.</p>\n      <p>Current U.S. Business pricing: Standard is <strong>$20/user/month billed annually</strong> or <strong>$25 monthly</strong>; Premium is <strong>$100/user/month billed annually</strong> or <strong>$125 monthly</strong>. A new Business workspace requires at least two paid seats.</p>\n    </div>\n    <ol class=\"setup-list\">\n      <li>Open ChatGPT Business and create the firm workspace.</li>\n      <li>Choose the initial Standard/Premium seat mix and complete billing.</li>\n      <li>Go to <strong>Workspace settings → Members</strong>, invite the team by email, and assign roles/seats.</li>\n      <li>Every person accepts the invite and confirms they are working inside the same Business workspace.</li>\n      <li>Install ChatGPT on each work computer and mobile device; use the web app as well. Sign into the same account and switch to the Business workspace.</li>\n      <li>Confirm ChatGPT Work is available to the team and that the primary implementation operator has enough usage capacity.</li>\n      <li>The agent inventories the firm’s current apps and asks which are authoritative: Google Workspace or Microsoft 365, file storage, QuickBooks, e-sign, meetings, Slack, CAD/BIM, rendering and any other tools.</li>\n      <li>Connect approved Plugins/Apps. When a provider requires sign-in, MFA or admin approval, the agent gives the exact step and waits. If a native connection is unavailable, it proposes the approved API/custom connector path instead of pretending it is connected.</li>\n    </ol>\n    <div class=\"official-links\">\n      <a href=\"https://chatgpt.com/business/\" target=\"_blank\" rel=\"noopener\">Start ChatGPT Business ↗</a>\n      <a href=\"https://openai.com/business/pricing/\" target=\"_blank\" rel=\"noopener\">Business pricing ↗</a>\n      <a href=\"https://chatgpt.com/download/\" target=\"_blank\" rel=\"noopener\">Download ChatGPT ↗</a>\n    </div>\n    <p class=\"quiet-note\">For a shared firm workspace, Business is the cleaner starting point than buying separate individual Pro subscriptions. Upgrade seat capacity later if real usage requires it.</p>"},{"title":"AI Project Intake & Setup","summary":"AI turns a new inquiry into a ready-to-work project before the team starts designing.","detail":"AI extracts the client, site, program, goals, timing, budget assumptions and contacts from emails, calls and notes; creates the project brief; proposes the folder structure, meeting cadence and next actions; and routes anything missing to the right person."},{"title":"AI Site & Zoning Preflight","summary":"AI assembles the site facts and code constraints the team normally has to hunt down manually.","detail":"AI organizes surveys, existing-condition information, photos, prior permits and approvals, then researches and structures FAR, setbacks, height, massing, Residential Design Standards, top-of-slope, stream-margin and other project-specific constraints into a design-ready preflight for architect review."},{"title":"AI Sketch → Editable 3D","summary":"AI turns John’s pencil sketch into structured geometry without replacing the original design intent.","detail":"AI preserves the original sketch, identifies whether it is a plan, section, elevation or perspective, separates known dimensions from inferred geometry, creates structured 2D, and produces an editable 3D proposal. The team verifies dimensions before anything becomes authoritative CAD/BIM."},{"title":"AI Concept Package Production","summary":"AI turns design direction into comparable A / B / C concept packages in a fraction of the manual production time.","detail":"From the same brief, site and program, AI helps produce three clearly differentiated concept packages with plans, massing, views, material direction, assumptions, relative complexity and presentation graphics. The architect directs the design; AI accelerates the production and comparison."},{"title":"AI Client Review & Approvals","summary":"AI builds the client presentation, explains the decisions, records feedback, and updates the project record.","detail":"AI gathers the current plans, model views, renderings, materials, cost/scope impacts and open questions into one review package. After the meeting it records approve, revise or hybrid decisions against the exact version and creates the downstream tasks automatically."},{"title":"AI Schematic Design & DD Support","summary":"AI carries approved decisions forward so plans, sections, rooms, materials and coordination stay aligned.","detail":"As the project moves through SD and DD, AI checks that the selected concept, client decisions, area targets, room requirements, model views, specifications and consultant inputs remain synchronized. It flags conflicts and prepares the next coordination work instead of relying on someone to remember every dependency."},{"title":"AI Construction Document QA","summary":"AI checks sheets, model views, schedules and specifications before the architect releases the set.","detail":"AI scans for stale views, missing approvals, unresolved dimensions, sheet/spec inconsistencies, superseded information and incomplete coordination. It prepares an issue-readiness report and correction list; the architect remains the release authority."},{"title":"AI Specifications & Vendor Research","summary":"AI researches products, compares quotes, tracks lead times, and keeps the finish schedule current.","detail":"AI gathers manufacturer data, product options, finishes, dimensions, costs, vendors, lead times, alternates, utility requirements and samples into a structured specification schedule. It can normalize competing quotes and flag stale pricing or long-lead risks for review."},{"title":"AI Visualization & Presentations","summary":"AI regenerates renderings, diagrams and client boards when the design changes instead of rebuilding them by hand.","detail":"AI reuses approved camera views, visual direction, materials and presentation templates to update stills, diagrams, interactive 3D and presentation boards from the latest design. This makes design communication faster while keeping the visual language consistent."},{"title":"AI Consultant Coordination","summary":"AI sends the right backgrounds, compares returned files, and surfaces coordination conflicts for the team.","detail":"AI tracks which model/drawing version each consultant received, what was requested and when it is due. When structural, MEP or civil information comes back, AI compares it with the prior issue, identifies meaningful changes and creates targeted coordination items for Joel or John."},{"title":"AI Permit & AHJ Management","summary":"AI tracks the permit path, turns reviewer comments into tasks, and prepares coordinated response packages.","detail":"AI maintains the jurisdiction checklist, submission history, reviewer comments, hearings and permit status. Each comment is linked to the affected sheet or model area, assigned to an owner, tracked through revision, and assembled into a response matrix for architect review."},{"title":"AI Construction Administration","summary":"AI triages RFIs, submittals, substitutions and site issues against the current contract documents.","detail":"AI reads incoming contractor questions, finds the relevant drawing/spec/model context, identifies schedule or scope implications, drafts the response package and routes it for professional review. Site notes and verbal direction can also be converted into a traceable written project record."},{"title":"AI Email, Meetings & Project Memory","summary":"AI converts daily communication into decisions, tasks, risks and follow-ups so nothing lives only in someone’s inbox.","detail":"AI reads project email, meeting notes, voice notes and site conversations; matches them to the correct project; classifies what matters; drafts follow-ups; creates tasks and decision records; and keeps the authoritative project memory current."},{"title":"AI Practice Coordination & Daily Briefs","summary":"AI moves work between roles automatically and gives each person the daily actions that actually need human attention.","detail":"Specialist agents hand work from intake to model QA, specifications, consultant coordination, client reporting and billing without manual forwarding. John receives design/client decisions and critical risks; Joel gets model/production and consultant items; Jodie gets time, contracts, invoice readiness and receivables; Nick gets project health, stalled handoffs and automation issues."},{"title":"AI Scope, Time & Billing","summary":"AI catches added scope, prepares change orders, organizes time, and makes invoices ready for QuickBooks.","detail":"AI compares new requests with the approved scope, flags potential additional services before uncontracted work proceeds, suggests/captures time from project activity, applies the correct rate version, assembles change-order support and prepares invoice-ready data for accounting review."},{"title":"AI Client Portal & Lead Concierge","summary":"AI answers routine client and prospect questions without exposing private firm information.","detail":"The public AI concierge can explain the firm, process and portfolio, collect project basics and qualify inquiries. Authenticated clients can ask for current approved files, open decisions, schedules and project status within their own project only."},{"title":"AI Closeout, Firm Memory & Marketing","summary":"AI closes the project cleanly, preserves what the firm learned, and repurposes approved work for marketing.","detail":"AI assembles final issued drawings/models, specifications, warranties, approvals, consultant records and billing status; extracts reusable lessons and precedent; and, with approval, organizes project imagery and story material for case studies, awards, website updates and marketing."},{"title":"Two Ways to Build the Same System","summary":"Both paths are agent-led. The paid path adds hands-on implementation for the fastest, most robust and reliable launch.","detailHtml":"<p><strong>Both paths begin the same way:</strong> hand this file to ChatGPT Work or the designated implementation agent. The agent owns the onboarding sequence, asks for the required human actions, verifies the workspace and app connections, and builds toward the agreed pilot.</p>\n    <div class=\"path-compare\">\n      <div><h3>Free path with Nicholas</h3><p>$0 implementation fee. The agent drives the setup plan and the firm performs the necessary sign-ups, invitations, billing, permissions and app authorizations with Nicholas helping guide the process.</p></div>\n      <div><h3>Paid implementation</h3><p>$5,000 ($1,000 to begin, $4,000 at scoped delivery) for hands-on buildout, integrations, configuration, testing, QA/QC, team onboarding, workflow refinement and launch—the fastest, most robust and reliable route.</p></div>\n    </div>\n    <p>Optional ongoing consulting: $250–$700/month. Third-party software, API, hosting and provider subscription charges remain separate.</p>"}];
 
 const SPEC=[["exterior-gable",9,"front"],["plan-dashboard",18,"back"],["plan-open",16,"back"],["site-slope",22,"back"],["section-stair",18,"front"],["exterior-pavilions",15,"back"],["living-room",13,"front"],["plan-dd",24,"back"],["section-doc",27,"back"],["materials-wall",19,"front"],["living-gallery",20,"front"],["plan-consultant",23,"back"],["site-permit",28,"back"],["section-ca",16,"front"],["team-network",12,"back"],["systems-network",17,"back"],["billing-ledger",11,"front"],["living-portal",14,"front"],["data-archive",21,"back"],["exterior-offer",10,"front"]];
@@ -160,7 +237,7 @@ DATA.forEach((d,i)=>{
   main.appendChild(s);
   const n=document.createElement('a');n.href='#';n.innerHTML='<i>'+String(i+1).padStart(2,'0')+'</i><span>'+d.title+'</span>';n.onclick=e=>{e.preventDefault();main.scrollTo({top:s.offsetTop,behavior:'smooth'});nav.classList.remove('open')};nav.appendChild(n)
 });
-document.querySelector('.index').onclick=()=>nav.classList.add('open');document.querySelector('.navclose').onclick=()=>nav.classList.remove('open');document.querySelector('.close').onclick=()=>dlg.close();
+document.querySelector('.index').onclick=()=>nav.classList.add('open');document.querySelector('.navclose').onclick=()=>nav.classList.remove('open');document.querySelector('.close').onclick=()=>dlg.close();document.querySelector('.back').onclick=()=>dlg.close();dlg.addEventListener('click',e=>{const r=dlg.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dlg.close()});
 
 function cl(v,a=0,b=1){return Math.max(a,Math.min(b,v))}
 function sm(a,b,x){let t=cl((x-a)/(b-a));return t*t*(3-2*t)}
